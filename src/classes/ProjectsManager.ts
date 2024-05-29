@@ -31,10 +31,38 @@ export class ProjectsManager{
             if(!projectsPage || !detailsPage) {return}
             projectsPage.style.display = "none"
             detailsPage.style.display = "flex"
+            this.setDetailsPage(project)
         })
         this.ui.append(project.ui)
         this.list.push(project)
         return project
+    }
+
+    private setDetailsPage(project:Project){
+        const detailsPage = document.getElementById("project-details")
+        if (!detailsPage){return}
+        const name = detailsPage.querySelector("[data-project-info='name']")
+        if (name) {name.textContent=project.name}
+        const description = detailsPage.querySelector("[data-project-info='description']")
+        if (description) {description.textContent=project.description}
+        const cardName = detailsPage.querySelector("[data-project-info='card_name']")
+        if (cardName) {cardName.textContent=project.name}
+        const cardDescription = detailsPage.querySelector("[data-project-info='card_description']")
+        if (cardDescription) {cardDescription.textContent=project.description}
+        const status = detailsPage.querySelector("[data-project-info='status']")
+        if (status) {status.textContent=project.status}
+        const userRole = detailsPage.querySelector("[data-project-info='userRole']")
+        if (userRole) {userRole.textContent=project.userRole}
+        let finishDate = detailsPage.querySelector("[data-project-info='finishDate']")
+        if (finishDate) {
+            let dateObj = new Date(project.finishDate)
+            finishDate.textContent=dateObj.toDateString()}
+        const cost =  detailsPage.querySelector("[data-project-info='cost']")
+        if (cost) {cost.textContent=`$${project.cost}`}
+        const progress =  detailsPage.querySelector("[data-project-info='progress']") as HTMLDivElement
+        if (progress) {
+            progress.textContent=`${project.progress}%`
+            progress.style.width = `${project.progress}%`}
     }
 
     getProject(id:string){

@@ -21,7 +21,7 @@ export class Project implements IProject {
     //Class internals
     ui: HTMLDivElement
     cost: number=0
-    progress:number=0
+    progress:number=50
     id: string
 
     constructor(data:IProject) {
@@ -67,7 +67,7 @@ export class Project implements IProject {
             </div>
             <div class="card-property">
                 <p style="color: #969696;">Estimated Progress</p>
-                <p>${this.progress *100}%</p>
+                <p>${this.progress}%</p>
             </div>
         </div>`
     }
