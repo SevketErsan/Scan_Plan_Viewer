@@ -91,6 +91,5 @@ if(projectsBtn) {
         const detailsPage = document.getElementById("project-details") as HTMLDivElement
         projectsPage.style.display = "flex"
         detailsPage.style.display = "none"
-
     })
 }
